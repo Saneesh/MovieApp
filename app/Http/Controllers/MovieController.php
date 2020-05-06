@@ -18,48 +18,26 @@ class MovieController extends Controller {
     //->get(config('services.tmdb.url') . '/movie/popular?api_key=' . config('services.tmdb.v3token'))
       ->json()['results'];
 
+    $nowPlayingMovies = Http::
+      withToken(config('services.tmdb.v4token'))
+      ->get(config('services.tmdb.url') . '/movie/now_playing')
+      ->json()['results'];
+
     $genreList = Http::
       withToken(config('services.tmdb.v4token'))
       ->get(config('services.tmdb.url') . '/genre/movie/list')
       ->json()['genres'];
 
-    // foreach ($popularMovies as $genre) {
-    //   echo "'{$genre['id']}' => '" . $genre['name'] . "',";
-
-    // }
-
     $genres = collect($genreList)->mapWithKeys(function ($genre) {
       return [$genre['id'] => $genre['name']];
     });
 
-    dump($popularMovies);
-    dump($genres->toArray());
-
-    // $genres = [
-    //   '28' => 'Action',
-    //   '12' => 'Adventure',
-    //   '16' => 'Animation',
-    //   '35' => 'Comedy',
-    //   '80' => 'Crime',
-    //   '99' => 'Documentary',
-    //   '18' => 'Drama',
-    //   '10751' => 'Family',
-    //   '14' => 'Fantasy',
-    //   '36' => 'History',
-    //   '27' => 'Horror',
-    //   '10402' => 'Music',
-    //   '9648' => 'Mystery',
-    //   '10749' => 'Romance',
-    //   '878' => 'Science Fiction',
-    //   '10770' => 'TV Movie',
-    //   '53' => 'Thriller',
-    //   '10752' => 'War',
-    //   '37' => 'Western',
-    // ];
-    // $genres = [];
+    // dump($popularMovies);
+    dump($nowPlayingMovies);
 
     return view('index', [
       'popularMovies' => $popularMovies,
+      'nowPlayingMovies' => $nowPlayingMovies,
       'genres' => $genres,
     ]);
   }
