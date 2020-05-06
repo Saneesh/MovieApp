@@ -32,9 +32,6 @@ class MovieController extends Controller {
       return [$genre['id'] => $genre['name']];
     });
 
-    // dump($popularMovies);
-    dump($nowPlayingMovies);
-
     return view('index', [
       'popularMovies' => $popularMovies,
       'nowPlayingMovies' => $nowPlayingMovies,
@@ -68,7 +65,18 @@ class MovieController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show($id) {
-    //
+    $movie = Http::
+      withToken(config('services.tmdb.v4token'))
+      ->get(config('services.tmdb.url') . '/movie/' . $id . '?append_to_response=credits,videos,images')
+      ->json();
+
+    $movie['credits']['crew'] = collect($movie['credits']['crew'])->filter(function ($crew) {
+      return in_array($crew['department'], ['Directing', 'Production']);
+    })->toArray();
+
+    return view('show', [
+      'movie' => $movie,
+    ]);
   }
 
   /**

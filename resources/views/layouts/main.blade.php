@@ -7,7 +7,7 @@
         <title>Moon Movie App</title>
 
         <!-- Tailwind -->
-        <link href="css/main.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
     </head>
     <body class="font-sans bg-gray-900 text-white">
         <nav class="border-b border-gray-800">
