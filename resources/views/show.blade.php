@@ -36,14 +36,16 @@
             @endforeach
           </div>
         </div>
-        <div class="mt-12">
-          <a href="https://youtube.com/watch?v={{ $movie['videos']['results'][0]['key']}}" class="flex inline-flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150">
-            <svg class="bi bi-play w-4" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-            </svg>
-            <span class="ml-2">Play trailor</span>
-          </a>
-        </div>
+        @if(count($movie['videos']['results']) > 0)
+          <div class="mt-12">
+            <a href="https://youtube.com/watch?v={{ $movie['videos']['results'][0]['key']}}" class="flex inline-flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150">
+              <svg class="bi bi-play w-4" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
+              </svg>
+              <span class="ml-2">Play trailor</span>
+            </a>
+          </div>
+        @endif
       </div>
     </div>
   </div> <!-- End of movie info -->
