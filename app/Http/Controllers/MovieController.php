@@ -70,6 +70,10 @@ class MovieController extends Controller {
       ->get(config('services.tmdb.url') . '/movie/' . $id . '?append_to_response=credits,videos,images')
       ->json();
 
+    if (isset($movie['status_code'])) {
+      return response()->json('Movie details not available');
+    }
+
     $movie['credits']['crew'] = collect($movie['credits']['crew'])->filter(function ($crew) {
       return in_array($crew['department'], ['Directing', 'Production']);
     })->toArray();
