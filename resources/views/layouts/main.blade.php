@@ -14,14 +14,14 @@
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-6">
                 <ul class="flex flex-col md:flex-row items-center">
                     <li>
-                        <a href="#" class="flex">
+                        <a href="{{ route('movies.index') }}" class="flex">
                             <svg class="bi bi-moon w-5 fill-current text-gray-600"  viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M14.53 10.53a7 7 0 01-9.058-9.058A7.003 7.003 0 008 15a7.002 7.002 0 006.53-4.47z" clip-rule="evenodd"/>
                             </svg>Moon Movie App
                         </a>
                     </li>
                     <li class="md:ml-16 mt-3 md:mt-0">
-                        <a href="" class="hover:text-gray-300">Movies</a>
+                        <a href="{{ route('movies.index') }}" class="hover:text-gray-300">Movies</a>
                     </li>
                     <li class="md:ml-6 mt-3 md:mt-0">
                         <a href="" class="hover:text-gray-300">TV Shows</a>
