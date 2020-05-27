@@ -8,6 +8,7 @@
 
         <!-- Tailwind -->
         <link href="/css/main.css" rel="stylesheet">
+        @livewireStyles
     </head>
     <body class="font-sans bg-gray-900 text-white">
         <nav class="border-b border-gray-800">
@@ -31,15 +32,7 @@
                     </li>
                 </ul>
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="relative mt-3 md:mt-0">
-                        <input type="text" class="bg-gray-800 rounded-full w-64 pl-8 py-1 text-sm focus:outline-none focus:shadow-outline" placeholder="Search" />
-                        <div class="absolute top-0">
-                            <svg class="bi bi-search w-5 mt-2 ml-1 fill-current text-gray-500" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-                              <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                    </div>
+                    <livewire:search-dropdown />
                     <div class="md:ml-4 mt-3 md:mt-0">
                         <a href="#">
                             <img src="/images/avatar.png" alt="Avatar" class="rounded-full w-8" />
@@ -49,5 +42,6 @@
             </div>
         </nav>
         @yield('content')
+        @livewireScripts
     </body>
 </html>
